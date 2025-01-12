@@ -1,27 +1,44 @@
-Here's a glimpse of what the dataset looks like.
+Here's a sneak preview of what our data looks like:
 
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Projects/blob/main/Images/Salary_Data.png" alt="Salary Data" style="width: 70%;">
-  <p><em>Salary Data</em></p>
-</div>
-<br><br>
+![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/d24f0514a6f3a172482cfca7b399119015ad65707ea29ccf.png)
 
+I'm excited to share details about an interesting data analysis project that leverages a comprehensive job postings dataset. The data, courtesy of Luke Barrouse on [Kaggle](https://www.kaggle.com/datasets/lukebarousse/data-analyst-job-postings-google-search), focuses on Data Analyst positions across the United States, with daily updates of approximately 100 new job listings since November 2022. 
+<br/>
+<br/>
 
-Thanks to **Luke Barrouse** for his dataset on job postings hosted on [Kaggle](https://www.kaggle.com/datasets/lukebarousse/data-analyst-job-postings-google-search). This dataset pulls in job postings from **Google search results** for Data Analysts in the **United States**. The collection started in November 2022 and **adds about 100 jobs daily**. There's also a [remote source](https://storage.googleapis.com/gsearch_share/gsearch_jobs.csv) available to fetch the updated dataset.
-<br><br>
+## Dataset Overview
+The dataset captures real-world job posting information pulled directly from Google search results. What makes it particularly valuable is its dual availability:
 
+*   A static CSV file for traditional analysis
+*   A [remote source](https://storage.googleapis.com/gsearch_share/gsearch_jobs.csv) for real-time data updates
+<br/>
 
-Now, I have used this dataset to build 2 dashboards. The skills required for both the dashboards are available in the main [README](https://github.com/Ankush-Santra/Excel-Projects/blob/main/README.md) file.
-<br><br>
+## Dashboard Implementation
 
-* The first dashboard **uses the CSV file** and transforms the dataset using **Power Query**.
-* The second dashboard uses the **remote source as a data source** and transforms it via **Power Query**.
+I've created two interactive dashboards that offer unique perspectives on the salary data:
 
+1.  **CSV-Based Dashboard**
+    *   Uses the static dataset
+    *   Implements Power Query transformations
+    *   Provides foundational salary insights
+2.  **Real-Time Dashboard**
+    *   Connects to the remote data source
+    *   Applies identical Power Query transformations
+    *   Offers up-to-date market insights
 
+Both dashboards utilize two carefully crafted queries to transform and analyze the data effectively. The transformation logic remains consistent across both implementations, ensuring reliable comparisons and insights.
 
-The same **set of transformations** were applied. **2 queries were used** in total. Here's the code to replicate the first query:
+The detailed skills required for each dashboard can be found in the project's [README](https://github.com/Ankush-Santra/Excel-Project/blob/main/README.md) file, making it easy for others to replicate or build upon this work.
+<br/>
+<br/>
 
-```Spreadsheet
+## Building the Data Pipeline: A Closer Look
+
+Let me walk you through our data transformation process, which is both efficient and elegantly simple.
+
+#### QUERY 1
+
+```plaintext
 let
     Source = Csv.Document(File.Contents("C:\Users\astro\Desktop\gsearch_jobs.csv"),[Delimiter=",", Columns=27, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
@@ -63,12 +80,9 @@ in
     #"Reordered Columns"
 ```
 
-<br><br>
-The above code should be pretty self-explanatory.
+#### QUERY 2
 
-The next query only involves the **removal of extra columns**.
-
-```Spreadsheet
+```plaintext
 let
     Source = #"Data Jobs Cleaned",
     #"Removed Columns" = Table.RemoveColumns(Source,{"job_title", "seniority", "location", "extensions", "title", "schedule_type"})
@@ -76,6 +90,31 @@ in
     #"Removed Columns"
 ```
 
+### Query Structure
 
-<br><br>
-You can replicate the same results by adding the code in **Advanced Editor** under Power Query Editor. As the second dashboard uses a remote URL, **at one click** (on Refresh All under Data Tab), new data will be extracted, transformed, and loaded without any additional hassle. Thus, we **achieved ETL**.
+We implemented two streamlined queries to handle our data processing needs:
+
+*   The first query performs the core transformations (code provided above)
+*   The second query focuses on column optimization by removing unnecessary fields
+
+The transformation logic is straightforward and follows standard data cleaning practices, making it easy to understand and modify if needed.
+
+## Easy Replication Steps
+
+Want to recreate these dashboards? Here's how:
+
+1.  Open Power Query Editor
+2.  Access the Advanced Editor
+3.  Paste the provided code
+4.  Watch the magic happen!
+
+## Automated ETL Process
+
+The real beauty lies in the second dashboard's automation. By utilizing a remote URL as the data source, we've created a true ETL (Extract, Transform, Load) pipeline that:
+
+*   Updates with a single click on "Refresh All" under the Data Tab
+*   Automatically pulls fresh data from the source
+*   Applies transformations instantly
+*   Loads the results into your dashboard
+
+This automation eliminates manual updates and ensures you're always working with the latest data. It's data analysis made simple, yet powerful!
