@@ -102,3 +102,65 @@ For instance, if I am a Data Analyst seeking full-time remote roles in the Unite
   <p>Weekly Trends</p>
 </div>
 <br/>
+
+# Power Dashboard Overview
+
+Here’s a glimpse of the dashboard:
+
+<div align="center">
+  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Power%20Dashboard.png" width="80%">
+</div>
+
+<br/>
+
+# User Access and Security
+
+To ensure that users do not unintentionally alter the dashboards, both the worksheet and workbook have been locked. Rest assured, this will not affect your user experience. However, if you wish to explore the underlying workings and need access to unlock them, please use the following password:
+
+```plaintext
+excel
+```
+<br/>
+
+# Dashboard Overview
+
+This dashboard is a step up from a basic dashboard, designed with both job seekers and data explorers in mind.
+
+*   **For Job Seekers:** The dashboard offers enhanced flexibility through advanced filters powered by slicers, making it easy to customize and refine your search. For instance, if you're interested in both Data Analyst and Business Analyst roles, you can seamlessly explore both without the complexities posed by the previous tech stack.
+*   **For Explorers:** The versatility in filtering options allows for unrestricted exploration, empowering users to delve into any area of interest effortlessly.
+
+<br/>
+
+# Required Skills
+
+To maximize the potential of this dashboard, users should be proficient in the following skills:
+
+*   **Power Tables**
+*   **Pivot Tables**
+*   **Power Query**
+*   **DAX (Data Analysis Expressions)**
+*   **M-Language**
+*   **Pivot Charts**
+*   And other advanced data analysis tools and techniques.
+
+<br/>
+
+# Key Insights
+Assuming the same scenario as the basic dashboard—Remote, Full-Time Data Analyst Jobs in the U.S., this advanced dashboard addresses additional critical questions to provide deeper insights (for a more detailed understanding, it is recommended to download the dashboard).
+Here are some of the key questions answered:
+
+### What are the most in-demand skills?
+This insight highlights the top skills based on factors like median salary and the percentage of jobs requiring these skills.
+<div align="center">
+  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/In-demand%20Skills.png" width="60%">
+  <p>In-Demand Skills</p>
+</div>
+<br/>
+
+### How many skills are typically required for any job role?
+This provides clarity on the breadth of skills expected for different roles, helping users understand hiring trends.
+<div align="center">
+  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Skill%20Count.png" width="60%">
+  <p>Skill Count</p>
+</div>
+<br/>
