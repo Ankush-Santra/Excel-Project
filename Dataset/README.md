@@ -1,42 +1,47 @@
-Here's a sneak preview of what our data looks like:
+# Overview of the Dataset
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/d24f0514a6f3a172482cfca7b399119015ad65707ea29ccf.png)
+Below is a visual representation of the dataset:
 
-I'm excited to share details about an interesting data analysis project that leverages a comprehensive job postings dataset. The data, courtesy of Luke Barrouse on [Kaggle](https://www.kaggle.com/datasets/lukebarousse/data-analyst-job-postings-google-search), focuses on Data Analyst positions across the United States, with daily updates of approximately 100 new job listings since November 2022. 
-<br/>
-<br/>
+<div align="center">
+  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Salary%20Data.png" width="80%">
+</div>  
 
-## Dataset Overview
-The dataset captures real-world job posting information pulled directly from Google search results. What makes it particularly valuable is its dual availability:
-
-*   A static CSV file for traditional analysis
-*   A [remote source](https://storage.googleapis.com/gsearch_share/gsearch_jobs.csv) for real-time data updates
 <br/>
 
-## Dashboard Implementation
+# Purpose of This README
 
-I've created two interactive dashboards that offer unique perspectives on the salary data:
+This README file is designed to inform users about the source of the dataset and the transformations applied to it. For more information about the project and access to related dashboards, please refer to the main [README](https://github.com/Ankush-Santra/Excel-Project/blob/main/README.md) file.
 
-1.  **CSV-Based Dashboard**
-    *   Uses the static dataset
-    *   Implements Power Query transformations
-    *   Provides foundational salary insights
-2.  **Real-Time Dashboard**
-    *   Connects to the remote data source
-    *   Applies identical Power Query transformations
-    *   Offers up-to-date market insights
-
-Both dashboards utilize two carefully crafted queries to transform and analyze the data effectively. The transformation logic remains consistent across both implementations, ensuring reliable comparisons and insights.
-
-The detailed skills required for each dashboard can be found in the project's [README](https://github.com/Ankush-Santra/Excel-Project/blob/main/README.md) file, making it easy for others to replicate or build upon this work.
-<br/>
 <br/>
 
-## Building the Data Pipeline: A Closer Look
+# Dataset Details
 
-Let me walk you through our data transformation process, which is both efficient and elegantly simple.
+You can access the Kaggle dataset [here](https://www.kaggle.com/datasets/lukebarousse/data-analyst-job-postings-google-search). This dataset compiles job postings for Data Analyst positions across the United States. The collection began on November 4, 2022, with approximately 100 new entries added daily. We extend our gratitude to Luke Barousse for his efforts in creating and maintaining this dataset.
 
-#### QUERY 1
+<br/>
+
+# Accessing the Dataset
+
+There are two methods to obtain this dataset:
+
+1.  **Download the Dataset**: You can simply download the dataset for personal use.
+2.  **Access the Remote Source**: Alternatively, you can utilize the [remote source](https://storage.googleapis.com/gsearch_share/gsearch_jobs.csv) for real-time data insights at the click of a button.
+
+The first dashboard will utilize the downloaded dataset, while the second dashboard will leverage the remote source for the most current information.
+
+<br/>
+
+# Data Transformation Overview
+
+Both dashboards employ identical transformation processes, implemented through Power Query. I have developed two distinct queries, each with its specific set of transformations.
+
+<br/>
+
+## Query Details and Documentation
+
+Below, you'll find the detailed code implementation along with comprehensive explanations for each query:
+
+### Query 1
 
 ```plaintext
 let
@@ -80,7 +85,62 @@ in
     #"Reordered Columns"
 ```
 
-#### QUERY 2
+### Explanation
+
+Here's a breakdown of the key transformations in the code:
+
+#### Initial Data Loading and Basic Transformations
+
+*   Loads a CSV file from the specified path with 27 columns
+*   Promotes the first row to headers
+*   Changes data types for all columns appropriately (text, numbers, datetime, etc.)
+
+#### Data Cleaning Operations
+
+*   Removes several unnecessary columns (index, description, job\_id, thumbnail, etc.)
+*   Renames the 'via' column to 'jobs\_via' and removes the text "via" from values
+*   Trims whitespace from 'location' and 'jobs\_via' columns
+*   Standardizes salary rate terminology ("an hour" → "hourly", "a year" → "yearly")
+*   Filters data to only include entries after December 31, 2023
+
+#### Benefits and Requirements Analysis
+
+*   Adds boolean columns for:
+    *   No degree requirement
+    *   Health insurance
+    *   Dental insurance
+    *   Paid time off
+*   These are determined by checking the 'extensions' column for specific text
+
+#### Location Processing
+
+*   Replaces "Anywhere" with "Remote"
+*   Creates a cleaned location column by removing text in parentheses
+*   Trims the cleaned location
+
+#### Job Title Processing
+
+*   Adds a 'seniority' column (Senior/Non-Senior) based on title keywords
+*   Creates standardized job titles based on keywords:
+    *   Business Analyst
+    *   Cloud Engineer
+    *   Data Analyst
+    *   Data Engineer
+    *   Data Scientist
+*   Combines seniority with job title for final job title classification
+
+#### Final Formatting
+
+*   Standardizes schedule types
+*   Fixes typos in contract and internship terms
+*   Adds a new index column
+*   Reorders columns in a logical sequence
+
+This transformation pipeline creates a clean, standardized dataset suitable for analysis and visualization.
+
+<br/>
+
+### Query 2
 
 ```plaintext
 let
@@ -90,31 +150,65 @@ in
     #"Removed Columns"
 ```
 
-### Query Structure
+  
+### Explanation: 
 
-We implemented two streamlined queries to handle our data processing needs:
+This is a simple follow-up query that builds upon the previously cleaned data ("Data Jobs Cleaned"). Here's what it does:
 
-*   The first query performs the core transformations (code provided above)
-*   The second query focuses on column optimization by removing unnecessary fields
+#### Source Selection
 
-The transformation logic is straightforward and follows standard data cleaning practices, making it easy to understand and modify if needed.
+*   Uses the output from the first query ("Data Jobs Cleaned") as its source
 
-## Easy Replication Steps
+#### Column Removal
 
-Want to recreate these dashboards? Here's how:
+Removes redundant or unnecessary columns:
 
-1.  Open Power Query Editor
-2.  Access the Advanced Editor
-3.  Paste the provided code
-4.  Watch the magic happen!
+*   job\_title
+*   seniority
+*   location
+*   extensions
+*   title
+*   schedule\_type
 
-## Automated ETL Process
+#### Purpose
 
-The real beauty lies in the second dashboard's automation. By utilizing a remote URL as the data source, we've created a true ETL (Extract, Transform, Load) pipeline that:
+This transformation creates a more streamlined version of the dataset by:
 
-*   Updates with a single click on "Refresh All" under the Data Tab
-*   Automatically pulls fresh data from the source
-*   Applies transformations instantly
-*   Loads the results into your dashboard
+*   Eliminating duplicate information
+*   Removing intermediate columns used in the previous transformations
+*   Keeping only the final, processed columns needed for analysis
 
-This automation eliminates manual updates and ensures you're always working with the latest data. It's data analysis made simple, yet powerful!
+This simplified dataset likely serves as the foundation for specific visualizations or analyses where the removed columns aren't required.
+
+<br/>
+
+# How to Replicate This Work
+## Step-by-Step Implementation Guide
+
+1.  **Launch Power Query Editor**
+    *   Open your Power BI Desktop
+    *   Access the Power Query Editor through the 'Transform Data' button
+2.  **Access the Advanced Editor**
+    *   Navigate to the 'View' tab
+    *   Click on 'Advanced Editor'
+3.  **Implement the Code**
+    *   Copy the provided code
+    *   Paste it into the Advanced Editor window
+    *   Click 'Done' to apply the transformations
+
+## Data Source Options
+
+You have two flexible options for data implementation:
+
+1.  **Static Dataset**
+    *   Download and use the provided dataset
+    *   Perfect for one-time or periodic analysis
+2.  **Remote Source Connection**
+    *   Connect to the remote data source
+    *   Enables automatic daily updates
+    *   Implements real-time ETL (Extract, Transform, Load) processing
+    *   Transformations are automatically applied to new data
+
+## Key Advantage
+
+By setting up this automated ETL pipeline, you can maintain an up-to-date analysis with minimal manual intervention. The transformations will automatically process any new job listings as they're added to the dataset.
