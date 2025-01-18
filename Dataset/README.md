@@ -1,8 +1,8 @@
 # Dataset Overview
 Here's a visual representation of our dataset:
 
-<div style="text-align: center;">
-  <img src="/Images/Salary Data.png" alt="Salary Data" style="width: 70%; height: auto;">
+<div align="center">
+  <img src="/Images/Salary Data.png" width="70%">
   <p>Salary Dataset</p>
 </div>
 
