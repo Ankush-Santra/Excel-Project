@@ -1,49 +1,62 @@
-# Overview of the Dataset
+# Dataset Overview
+Here's a visual representation of our dataset:
 
-Below is a visual representation of the dataset:
+<div style="text-align: center;">
+  <img src="/Images/Salary Data.png" alt="Salary Data" style="width: 70%; height: auto;">
+  <p>Salary Dataset</p>
+</div>
 
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Salary%20Data.png" width="80%">
-</div>  
+
+
+<br/>
+
+# Table of Contents
+- [Purpose of This README](#purpose-of-this-readme)
+- [Dataset Details](#dataset-details)
+- [Accessing the Dataset](#accessing-the-dataset)
+- [Data Transformation Process](#data-transformation-process)
+
+    - [Query 1](#query-1)
+    - [Explanation](#explanation)
+    - [Query 2](#query-2)
+    - [Explanation](#explanation-1)
+
+- [Replication Guide](#replication-guide)
+- [ETL Implementation](#etl-implementation)
 
 <br/>
 
 # Purpose of This README
 
-This README file is designed to inform users about the source of the dataset and the transformations applied to it. For more information about the project and access to related dashboards, please refer to the main [README](https://github.com/Ankush-Santra/Excel-Project/blob/main/README.md) file.
+This documentation specifically focuses on the dataset's technical details, including its source, transformations, and preprocessing steps. For information about the main project and implementation details, please refer to our main [README](/README.md).
 
 <br/>
 
 # Dataset Details
-
-You can access the Kaggle dataset [here](https://www.kaggle.com/datasets/lukebarousse/data-analyst-job-postings-google-search). This dataset compiles job postings for Data Analyst positions across the United States. The collection began on November 4, 2022, with approximately 100 new entries added daily. We extend our gratitude to Luke Barousse for his efforts in creating and maintaining this dataset.
+You can obtain the dataset from [Kaggle](https://www.kaggle.com/datasets/lukebarousse/data-analyst-job-postings-google-search). This dataset is dynamic in nature, compiling data analyst job postings from the United States. The collection began on November 4, 2022, with approximately 100 new job postings added daily. Special thanks to Luke Barousse for his efforts in creating and maintaining this valuable resource.
 
 <br/>
 
 # Accessing the Dataset
+You can access the dataset in two ways:
+- **Manual Download**: Download the dataset directly from Kaggle.
+- **Remote Source**: Access the dataset through a provided [remote link](https://storage.googleapis.com/gsearch_share/gsearch_jobs).
 
-There are two methods to obtain this dataset:
 
-1.  **Download the Dataset**: You can simply download the dataset for personal use.
-2.  **Access the Remote Source**: Alternatively, you can utilize the [remote source](https://storage.googleapis.com/gsearch_share/gsearch_jobs.csv) for real-time data insights at the click of a button.
-
-The first dashboard will utilize the downloaded dataset, while the second dashboard will leverage the remote source for the most current information.
-
-<br/>
-
-# Data Transformation Overview
-
-Both dashboards employ identical transformation processes, implemented through Power Query. I have developed two distinct queries, each with its specific set of transformations.
+The first dashboard will utilize the manually downloaded dataset, while the second dashboard will draw data from the remote source.
 
 <br/>
 
-## Query Details and Documentation
+# Data Transformation Process
 
-Below, you'll find the detailed code implementation along with comprehensive explanations for each query:
+
+The dataset underwent preprocessing using Power Query. We've simplified the transformation process into just two queries, making it efficient and easily reproducible.
+
+<br/>
 
 ### Query 1
 
-```plaintext
+```powerquery
 let
     Source = Csv.Document(File.Contents("C:\Users\astro\Desktop\gsearch_jobs.csv"),[Delimiter=",", Columns=27, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
@@ -85,58 +98,33 @@ in
     #"Reordered Columns"
 ```
 
-### Explanation
+## Explanation
 
-Here's a breakdown of the key transformations in the code:
-
-#### Initial Data Loading and Basic Transformations
-
-*   Loads a CSV file from the specified path with 27 columns
-*   Promotes the first row to headers
-*   Changes data types for all columns appropriately (text, numbers, datetime, etc.)
-
-#### Data Cleaning Operations
-
-*   Removes several unnecessary columns (index, description, job\_id, thumbnail, etc.)
-*   Renames the 'via' column to 'jobs\_via' and removes the text "via" from values
-*   Trims whitespace from 'location' and 'jobs\_via' columns
-*   Standardizes salary rate terminology ("an hour" → "hourly", "a year" → "yearly")
-*   Filters data to only include entries after December 31, 2023
-
-#### Benefits and Requirements Analysis
-
-*   Adds boolean columns for:
-    *   No degree requirement
-    *   Health insurance
-    *   Dental insurance
-    *   Paid time off
-*   These are determined by checking the 'extensions' column for specific text
-
-#### Location Processing
-
-*   Replaces "Anywhere" with "Remote"
-*   Creates a cleaned location column by removing text in parentheses
-*   Trims the cleaned location
-
-#### Job Title Processing
-
-*   Adds a 'seniority' column (Senior/Non-Senior) based on title keywords
-*   Creates standardized job titles based on keywords:
-    *   Business Analyst
-    *   Cloud Engineer
-    *   Data Analyst
-    *   Data Engineer
-    *   Data Scientist
-*   Combines seniority with job title for final job title classification
-
-#### Final Formatting
-
-*   Standardizes schedule types
-*   Fixes typos in contract and internship terms
-*   Adds a new index column
-*   Reorders columns in a logical sequence
-
-This transformation pipeline creates a clean, standardized dataset suitable for analysis and visualization.
+#### Initial Setup
+- Reads CSV file with 27 columns using UTF-8 encoding
+- Promotes headers and sets appropriate data types for all columns
+- Removes unnecessary columns like index, description, job_id, thumbnail, etc.
+#### Data Cleaning Steps
+- Renames 'via' column to 'jobs_via' and removes "via" text
+- Trims whitespace from location and jobs_via columns
+- Standardizes salary rate terms ('an hour' → 'hourly', 'a year' → 'yearly')
+- Filters data to include only entries after December 31, 2023
+#### Feature Engineering
+- Adds boolean columns for benefits:
+    - *no_degree_mentioned*
+    - *health_insurance*
+    - *dental_insurance*
+    - *paid_time_off*
+- Creates cleaned location column by removing text in brackets
+- Adds seniority classification (Senior/Non-Senior)
+- Standardizes 'Remote' work locations
+- Creates job title categories (Data Analyst, Business Analyst, etc.)
+- Standardizes schedule types (Contractor, Internship)
+#### Final Touches
+- Adds new index column
+- Reorders columns for better organization
+- Filters out null job titles
+- Creates final job titles with seniority prefixes
 
 <br/>
 
@@ -153,62 +141,27 @@ in
   
 ### Explanation: 
 
-This is a simple follow-up query that builds upon the previously cleaned data ("Data Jobs Cleaned"). Here's what it does:
-
-#### Source Selection
-
-*   Uses the output from the first query ("Data Jobs Cleaned") as its source
-
-#### Column Removal
-
-Removes redundant or unnecessary columns:
-
-*   job\_title
-*   seniority
-*   location
-*   extensions
-*   title
-*   schedule\_type
-
-#### Purpose
-
-This transformation creates a more streamlined version of the dataset by:
-
-*   Eliminating duplicate information
-*   Removing intermediate columns used in the previous transformations
-*   Keeping only the final, processed columns needed for analysis
-
-This simplified dataset likely serves as the foundation for specific visualizations or analyses where the removed columns aren't required.
+- Takes "Data Jobs Cleaned" as source table
+- Removes 6 redundant columns:
+    - *job_title*
+    - *seniority*
+    - *location*
+    - *extensions*
+    - *title*
+    - *schedule_type*
 
 <br/>
 
-# How to Replicate This Work
-## Step-by-Step Implementation Guide
+# Replication Guide
+- Open Power Query Editor
+- Access the Advanced Editor (Alt + F12)
+- Paste the provided M-Language queries
+- Apply transformations in sequence:
 
-1.  **Launch Power Query Editor**
-    *   Open your Power BI Desktop
-    *   Access the Power Query Editor through the 'Transform Data' button
-2.  **Access the Advanced Editor**
-    *   Navigate to the 'View' tab
-    *   Click on 'Advanced Editor'
-3.  **Implement the Code**
-    *   Copy the provided code
-    *   Paste it into the Advanced Editor window
-    *   Click 'Done' to apply the transformations
+<br/>
 
-## Data Source Options
-
-You have two flexible options for data implementation:
-
-1.  **Static Dataset**
-    *   Download and use the provided dataset
-    *   Perfect for one-time or periodic analysis
-2.  **Remote Source Connection**
-    *   Connect to the remote data source
-    *   Enables automatic daily updates
-    *   Implements real-time ETL (Extract, Transform, Load) processing
-    *   Transformations are automatically applied to new data
-
-## Key Advantage
-
-By setting up this automated ETL pipeline, you can maintain an up-to-date analysis with minimal manual intervention. The transformations will automatically process any new job listings as they're added to the dataset.
+# ETL Implementation
+The dashboard connected to the remote source enables automated data updates through a simple refresh mechanism. This implementation demonstrates Excel's ETL (Extract, Transform, Load) capabilities:
+- **Extract**: Data pulled from remote source
+- **Transform**: Automated application of our Power Query transformations
+- **Load**: One-click refresh for updated insights

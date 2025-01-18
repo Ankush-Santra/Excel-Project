@@ -1,166 +1,196 @@
-# Explore the Dataset
-
-If you're keen to delve deeper into the dataset, we recommend checking out the README file available [here](/Dataset/README.md)
-
-<br/>
-
-# Basic Dashboard Overview
-
-Here’s a glimpse of the dashboard:
-
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Basic%20Dashboard.png" width="80%">
-</div>
-
-<br/>
-
-# User Access and Security
-
-To ensure that users do not unintentionally alter the dashboards, both the worksheet and workbook have been locked. Rest assured, this will not affect your user experience. However, if you wish to explore the underlying workings and need access to unlock them, please use the following password:
-
-```plaintext
-excel
-```
-
-<br/>
-
-# Dashboard Purpose
-
-This dashboard is designed to **assist job seekers** in **data-related fields** by providing a quick analysis of the job market. It highlights key metrics such as expected salaries and job benefits. The primary audience for this tool includes job seekers with specific goals, such as:
-
-*   The position they are applying for
-*   Desired work schedules
-*   Preferences for remote opportunities
-
-For those who prefer a broader view, I recommend exploring the second dashboard, which offers a more comprehensive and up-to-date analysis of the job market without any filters.
-
-<br/>
-
-# Required Skills
-
-To effectively utilize this dashboard, users should possess the following skills:
-
-*   Basic Excel Skills
-*   Formulas
-*   Charts
-*   Data Validation
-*   And more
-
-<br/>
-
-# Key Insights
-
-For instance, if I am a Data Analyst seeking full-time remote roles in the United States, this dashboard will help me answer critical questions such as:
-
-### What salary can you expect based on different pay structures (hourly, yearly, and standardized yearly from hourly rates)?
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Standardized%20Salary.png" width="60%">
-  <p>Standardized Salary</p>
-</div>
-<br/>
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Yearly%20Salary.png" width="60%">
-  <p>Yearly Salary</p>
-</div>
-<br/>
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Hourly%20Salary.png" width="60%">
-  <p>Hourly Salary</p>
-</div>
-<br/>
-
-### How many jobs match your criteria (e.g., Data Analyst, full-time, remote), and which platform lists the highest number of relevant jobs?
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/KPI.png" width="60%">
-  <p>Job Count & Best Job Platform</p>
-</div>
-<br/>
-
-### What is the distribution of available jobs across different pay schedules (hourly, monthly, yearly)?
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Job%20Schedule.png" width="50%">
-  <p>Pay Schedules</p>
-</div>
-<br/>
-
-### What are the probabilities of receiving various benefits (e.g., paid time off, health insurance) based on your selected filters?
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Benefits.png" width="60%">
-  <p>Benefits</p>
-</div>
-<br/>
-
-### Which months in 2024 had the highest number of job postings? Additionally, which days of the week saw the most job postings?
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Months.png" width="60%">
-  <p>Monthly Trends</p>
-</div>
-<br/>
-
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Days.png" width="60%">
-  <p>Weekly Trends</p>
-</div>
-<br/>
-
-# Power Dashboard Overview
-
-Here’s a glimpse of the dashboard:
-
-<div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Power%20Dashboard.png" width="80%">
-</div>
-
-<br/>
-
-# User Access and Security
-
-To ensure that users do not unintentionally alter the dashboards, both the worksheet and workbook have been locked. Rest assured, this will not affect your user experience. However, if you wish to explore the underlying workings and need access to unlock them, please use the following password:
-
-```plaintext
-excel
-```
-<br/>
-
 # Dashboard Overview
+This documentation focuses specifically on the interactive dashboards. For information about the datasets, please refer to our [Dataset Documentation](/Dataset/README.md).
 
-This dashboard is a step up from a basic dashboard, designed with both job seekers and data explorers in mind.
+## Table of Contents
+- [Access Control](#access-control)
+- [Basic Dashboard](#basic-dashboard)
+- [Purpose](#purpose)
 
-*   **For Job Seekers:** The dashboard offers enhanced flexibility through advanced filters powered by slicers, making it easy to customize and refine your search. For instance, if you're interested in both Data Analyst and Business Analyst roles, you can seamlessly explore both without the complexities posed by the previous tech stack.
-*   **For Explorers:** The versatility in filtering options allows for unrestricted exploration, empowering users to delve into any area of interest effortlessly.
+  - [Target User](#target-user)
+  - [Key Filters](#key-filters)
+  - [Note for Data Explorers](#note-for-data-explorers)
+
+- [Required Skills](#required-skills)
+- [Key Insights](#key-insights)
+- [Power Dashboard](#power-dashboard)
+- [Purpose](#purpose-1)
+
+  - [For Job Seekers](#for-job-seekers)
+  - [For Market Explorers](#for-market-explorers)
+  - [Real-Time Data Advantage](#real-time-data-advantage)
+
+- [Required Skills](#required-skills-1)
+
+<br/>
+
+# Access Control
+Both dashboards have protected worksheets and workbooks to maintain data integrity and prevent accidental modifications. If you need to make changes:
+
+**Password**
+```
+excel
+```
+<br/>
+
+# Basic Dashboard
+Below is a snapshot of the Basic Dashboard interface:
+
+<div align="center">
+  <img src="Images/Basic Dashboard.png" width="70%">
+  <p>Basic Dashboard</p>
+</div>
+
+<br/>
+
+# Purpose
+
+Designed specifically for job seekers navigating the data industry landscape, this Basic Dashboard serves as your personal compass in the job market. Through an intuitive interface, it empowers users to make informed career decisions based on real market data.
+
+## Target User
+The dashboard is primarily tailored for:
+- Job seekers in the data industry
+- Professionals planning career transitions
+- Entry-level candidates exploring opportunities
+
+## Key Filters
+The dashboard features carefully crafted data validation filters to customize your job search:
+- Position/Role Selection
+- Work Schedule Preferences
+- Remote Work Options
+
+## Note for Data Explorers
+While this dashboard serves job seekers effectively, data enthusiasts and market analysts might find our [Power Dashboard](#power-dashboard) more suitable for in-depth analysis, offering enhanced filtering capabilities through dynamic slicers.
 
 <br/>
 
 # Required Skills
-
-To maximize the potential of this dashboard, users should be proficient in the following skills:
-
-*   **Power Tables**
-*   **Pivot Tables**
-*   **Power Query**
-*   **DAX (Data Analysis Expressions)**
-*   **M-Language**
-*   **Pivot Charts**
-*   And other advanced data analysis tools and techniques.
+To effectively utilize this dashboard, familiarity with the following Excel concepts is recommended:
+- Basic Excel Navigation
+- Formula Understanding
+- Chart Interpretation
+- Data Validation Concepts
+- And more.
 
 <br/>
 
 # Key Insights
-Assuming the same scenario as the basic dashboard—Remote, Full-Time Data Analyst Jobs in the U.S., this advanced dashboard addresses additional critical questions to provide deeper insights (for a more detailed understanding, it is recommended to download the dashboard).
-Here are some of the key questions answered:
+While this README cannot encompass all possible insights due to the numerous permutations and combinations of filters, we can highlight some significant findings. For instance, let's consider a scenario where you are specifically searching for **full-time Data Analyst positions in the United States** that offer remote work options.
 
-### What are the most in-demand skills?
-This insight highlights the top skills based on factors like median salary and the percentage of jobs requiring these skills.
+#### What salary can you expect based on different pay structures (hourly, yearly, and standardized yearly from hourly rates)?
 <div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/In-demand%20Skills.png" width="60%">
-  <p>In-Demand Skills</p>
+  <img src="/Images/Standardized Salary.png" width="60%">
+  <p>Median salary of $90,000 (Range: $21,000 - $198,000)</p>
+</div>
+<br/>
+<div align="center">
+  <img src="/Images/Yearly Salary.png" width="60%">
+  <p>Median salary of $100,000 (Range: $40,000 - $198,000)</p>
+  <p>Prefer to get paid yearly.</p>
+</div>
+<br/>
+<div align="center">
+  <img src="/Images/Hourly Salary.png" width="60%">
+  <p>Median hourly wage of $26 (Range: $10 - $77)</p>
+</div>
+
+<br/>
+
+#### How many jobs match your criteria (e.g., Data Analyst, full-time, remote), and which platform lists the highest number of relevant jobs?
+<div align="center">
+  <img src="/Images/KPI.png" width="60%">
+  <p>Over 2,000 job opportunities available, with LinkedIn being the primary source</p>
 </div>
 <br/>
 
-### How many skills are typically required for any job role?
-This provides clarity on the breadth of skills expected for different roles, helping users understand hiring trends.
+#### What is the distribution of available jobs across different pay schedules (hourly, monthly, yearly)?
 <div align="center">
-  <img src="https://github.com/Ankush-Santra/Excel-Project/blob/main/Images/Skill%20Count.png" width="60%">
-  <p>Skill Count</p>
+  <img src="/Images/Job Schedule.png" width="50%">
+  <p>Majority of positions offer annual compensation</p>
+</div>
+<br/>
+
+#### What are the probabilities of receiving various benefits (e.g., paid time off, health insurance) based on your selected filters?
+<div align="center">
+  <img src="Images/Benefits.png" width="60%">
+  <p>Limited positions available for non-degree holders - education is recommended. Only 5% of positions include paid time off (PTO) benefits - consider negotiating this during offers </p>
+</div>
+<br/>
+
+#### Which months in 2024 had the highest number of job postings? Additionally, which days of the week saw the most job postings?
+<div align="center">
+  <img src="/Images/Months.png" width="60%">
+  <p>Try applying for jobs in early months, number of postings dips as the year commences</p>
+</div>
+<br/>
+
+<div align="center">
+  <img src="/Images/Days.png" width="60%">
+  <p>Avoid applying on weekends</p>
+</div>
+<br/>
+
+# Power Dashboard
+
+Below is a snapshot of the Basic Dashboard interface:
+
+<div align="center">
+  <img src="/Images/Power Dashboard.png" width="70%">
+  <p>Power Dashboard</p>
+</div>
+<br/>
+
+# Purpose
+
+This enhanced power dashboard transcends traditional analytics, serving as a comprehensive tool for both active job seekers and market researchers.
+
+## For Job Seekers
+Transform your job search with our advanced slicer functionality. Now you can:
+- Simultaneously explore multiple related roles (e.g., Data Analyst + Business Analyst positions)
+- Fine-tune your search parameters in real-time
+- Make informed decisions based on current market data
+## For Market Explorers
+Experience unlimited analytical freedom with:
+- Flexible filtering options
+- Comprehensive market insights
+- Customizable data views
+## Real-Time Data Advantage
+Thanks to our implemented ETL (Extract, Transform, Load) pipeline:
+- One-click data refresh capability
+- Always access to the most current market information
+- Continuous, up-to-date insights
+
+Whether you're actively seeking opportunities or analyzing market trends, this dashboard ensures you're working with the latest, most relevant data at all times.
+
+<br/>
+
+# Required Skills
+To effectively utilize this dashboard, familiarity with the following Excel concepts is recommended:
+*   Power Tables
+*   Pivot Tables
+*   Power Query
+*   DAX (Data Analysis Expressions)
+*   M-Language
+*   Pivot Charts
+*   And more.
+
+<br/>
+
+# Key Insights
+Assuming the same persona of a **job seeker looking for full-time Data Analyst roles in the United States**, most of the questions are already answered in the basic dashboard. However, to fully leverage the power of this dashboard, I highly recommend that you download and experience it for yourself.
+In addition to those already answered, here are some more key insights that this dashboard offers:
+
+#### What are the most in-demand skills?
+<div align="center">
+  <img src="/Images/In-demand Skills.png" width="60%">
+  <p>While Snowflake tops the chart, the demand is low. Better to focus on Python, R, SQL which aren't far behind.</p>
+</div>
+<br/>
+
+#### How many skills are typically required for any job role?
+<div align="center">
+  <img src="/Images/Skill Count.png" width="60%">
+  <p>On an average, employers expect 3 skills from Data Analysts.
+
+</p>
 </div>
 <br/>
