@@ -1,6 +1,6 @@
 # Explore the Dataset
 
-If you're keen to delve deeper into the dataset, we recommend checking out the README file available [here](Dataset\README.md).
+If you're keen to delve deeper into the dataset, we recommend checking out the README file available [here](/Dataset/README.md)
 
 <br/>
 
